@@ -37,7 +37,18 @@
 # We encourage you to include a README file with any additional information you would like to provide us with. It's a great place to include the getting started how-to, explain your design decisions etc. We recommend you submit your solution as a CLI application in the language your are most comfortable in, keeping in mind we predominantly use Ruby/Rails, Typescript/React, and a bit of Python. Remember to write a clean and well-structured solution and to commit early and often. Feel free to address the problem creatively and keep the extensibility in mind as we ask successful candidates to extend their implementation.
 
 require 'json'
+require 'pry'
 
-products_file = File.read('products.json')
-products = JSON.parse(products_file)
-puts products
+class Marketplace
+
+  attr_reader :products
+  
+  def initialize
+    products_file = File.read('products.json')
+    @products = JSON.parse(products_file)
+  end
+
+end
+
+test_marketplace = Marketplace.new
+puts test_marketplace.products
