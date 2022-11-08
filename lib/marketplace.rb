@@ -43,12 +43,15 @@ class Marketplace
 
   attr_reader :products
   
-  def initialize
-    products_file = File.read('products.json')
-    @products = JSON.parse(products_file)
+  def initialize(products)
+    # products_file = File.read('products.json')
+    # @products = JSON.parse(products_file)
+    @products = products
   end
 
 end
 
-test_marketplace = Marketplace.new
+products_file = File.read('products.json')
+products = JSON.parse(products_file)
+test_marketplace = Marketplace.new products
 puts test_marketplace.products
