@@ -50,16 +50,29 @@ class Marketplace
     @cart = []
   end
 
-  def list_out
+  def list_products
     puts "The marketplace's list of products!"
     @products.each_with_index do |item, i|
       p "#{i+1}. Item: #{item["name"]}, Price: #{item["price"]}" 
     end
   end
-
+  
   def add_item(num)
     @cart << @products[num - 1]
   end
+
+  def remove_item(num)
+    @cart.delete(@cart[num - 1])
+  end
+    
+  
+  def list_cart
+    puts "This is your cart with current items:"
+    @cart.each_with_index do |item, i|
+      p "#{i+1}. Item: #{item["name"]}, Price: #{item["price"]}" 
+    end
+  end
+
 
 end
 
@@ -69,4 +82,10 @@ test_marketplace = Marketplace.new products
 # puts test_marketplace.products
 # test_marketplace.list_out
 test_marketplace.add_item(1)
-p test_marketplace.cart
+test_marketplace.cart
+test_marketplace.add_item(2)
+test_marketplace.list_cart
+test_marketplace.remove_item(2)
+test_marketplace.list_cart
+test_marketplace.remove_item(1)
+test_marketplace.list_cart
