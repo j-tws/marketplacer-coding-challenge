@@ -41,12 +41,13 @@ require 'pry'
 
 class Marketplace
 
-  attr_reader :products
+  attr_reader :products, :cart
   
   def initialize(products)
     # products_file = File.read('products.json')
     # @products = JSON.parse(products_file)
     @products = products
+    @cart = []
   end
 
   def list_out
@@ -56,12 +57,16 @@ class Marketplace
     end
   end
 
-  
+  def add_item(num)
+    @cart << @products[num - 1]
+  end
 
 end
 
 products_file = File.read('products.json')
 products = JSON.parse(products_file)
 test_marketplace = Marketplace.new products
-puts test_marketplace.products
-test_marketplace.list_out
+# puts test_marketplace.products
+# test_marketplace.list_out
+test_marketplace.add_item(1)
+p test_marketplace.cart
