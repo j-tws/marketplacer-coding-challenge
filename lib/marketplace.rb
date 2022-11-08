@@ -76,6 +76,16 @@ class Marketplace
     total
   end
 
+  def cart_total_after_discount
+    if self.cart_total > 100 
+      return (self.cart_total * 0.8).round(2)
+    elsif self.cart_total.between?(50, 100)
+      return (self.cart_total * 0.85).round(2)
+    else
+      return (self.cart_total * 0.9).round(2)
+    end
+  end
+
 end
 
 products_file = File.read('products.json')
@@ -84,4 +94,6 @@ test_marketplace = Marketplace.new products
 
 test_marketplace.add_item(1)
 test_marketplace.add_item(2)
+test_marketplace.add_item(2)
 p test_marketplace.cart_total
+p test_marketplace.cart_total_after_discount
