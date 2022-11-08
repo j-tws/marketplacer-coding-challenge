@@ -49,9 +49,19 @@ class Marketplace
     @products = products
   end
 
+  def list_out
+    puts "The marketplace's list of products!"
+    @products.each_with_index do |item, i|
+      p "#{i+1}. Item: #{item["name"]}, Price: #{item["price"]}" 
+    end
+  end
+
+  
+
 end
 
 products_file = File.read('products.json')
 products = JSON.parse(products_file)
 test_marketplace = Marketplace.new products
 puts test_marketplace.products
+test_marketplace.list_out
