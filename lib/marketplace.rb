@@ -44,8 +44,6 @@ class Marketplace
   attr_reader :products, :cart
   
   def initialize(products)
-    # products_file = File.read('products.json')
-    # @products = JSON.parse(products_file)
     @products = products
     @cart = []
   end
@@ -64,7 +62,6 @@ class Marketplace
   def remove_item(num)
     @cart.delete(@cart[num - 1])
   end
-    
   
   def list_cart
     puts "This is your cart with current items:"
@@ -73,19 +70,18 @@ class Marketplace
     end
   end
 
+  def cart_total
+    total = 0
+    @cart.each { |item| total += item["price"].to_f}
+    total
+  end
 
 end
 
 products_file = File.read('products.json')
 products = JSON.parse(products_file)
 test_marketplace = Marketplace.new products
-# puts test_marketplace.products
-# test_marketplace.list_out
+
 test_marketplace.add_item(1)
-test_marketplace.cart
 test_marketplace.add_item(2)
-test_marketplace.list_cart
-test_marketplace.remove_item(2)
-test_marketplace.list_cart
-test_marketplace.remove_item(1)
-test_marketplace.list_cart
+p test_marketplace.cart_total

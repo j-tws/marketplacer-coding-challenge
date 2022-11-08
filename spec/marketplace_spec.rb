@@ -27,9 +27,14 @@ RSpec.describe Marketplace do
   end
 
   it "can remove items from cart" do
-    test_marketplace.add_item 2
     test_marketplace.remove_item 1
-    expect(test_marketplace.cart.length).to eq(1)
+    expect(test_marketplace.cart.length).to eq(0)
+  end
+
+  it "can calculate total amount in cart" do
+    test_marketplace.add_item 1
+    test_marketplace.add_item 2
+    expect(test_marketplace.cart_total).to eq(15)
   end
 
 end
