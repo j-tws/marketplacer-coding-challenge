@@ -41,11 +41,20 @@ require 'pry'
 
 class Marketplace
 
-  attr_reader :products, :cart
+  attr_reader :products, :cart, :discount
   
   def initialize(products)
     @products = products
     @cart = []
+
+    # Note: You can use ranges as keys in hash
+    @discount = {
+      # try to research to see if there's better way for 100..9999
+      0..20 => 1,
+      20..50 => 0.9,
+      50..100 => 0.85,
+      100..9999 => 0.8
+    }
   end
 
   def list_products
@@ -77,13 +86,11 @@ class Marketplace
   end
 
   def cart_total_after_discount
-    if self.cart_total > 100 
-      return (self.cart_total * 0.8).round(2)
-    elsif self.cart_total.between?(50, 100)
-      return (self.cart_total * 0.85).round(2)
-    else
-      return (self.cart_total * 0.9).round(2)
-    end
+    # Alternatively you can use 'case equality operator' aka '==='
+    # it is used to define quality in the context of a case statement
+    # i'll use include? just for better readability
+    discount = @discount.select { |key| key.include? self.cart_total }
+    (self.cart_total * discount.values.first).round(2)
   end
 
 end
@@ -94,6 +101,16 @@ test_marketplace = Marketplace.new products
 
 test_marketplace.add_item(1)
 test_marketplace.add_item(2)
-test_marketplace.add_item(2)
+test_marketplace.add_item(3)
 p test_marketplace.cart_total
 p test_marketplace.cart_total_after_discount
+
+# test = {
+#   1..5 => "this",
+#   5..10 => "that"
+# }
+
+# find = test.select {|el| el == 3}
+# p find
+
+# binding.pry
