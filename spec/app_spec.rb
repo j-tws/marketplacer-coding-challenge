@@ -11,7 +11,7 @@ RSpec.describe App do
   it 'should not accept invalid command' do
     test_app = App.new
     
-    # ??????
+    # ??
     expect do
       test_app.run_command("100")
     end.to output("Please select valid option\n").to_stdout

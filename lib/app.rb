@@ -32,13 +32,11 @@ class App
     puts "Your total is $#{@marketplace.cart_total.round(2)}"
     
     if @marketplace.cart_total >= 20
-      discount = @marketplace
-        .discount
-        .select { |key| key.include? @marketplace.cart_total }
+      discount = @marketplace.cart_total_after_discount
 
-      puts "Discount of #{100 - (100 * discount.values.last).to_i}% applied on total greater than $#{discount.keys.first.first}"
+      puts "Discount of #{100 - (100 * discount.values.first).to_i}% applied on total greater than $#{discount.keys.first}"
 
-      puts "TOTAL after discount - $#{@marketplace.cart_total_after_discount.round(2)}"
+      puts "TOTAL after discount - $#{(@marketplace.cart_total * discount.values.first).round(2)}"
     end
 
     puts "Please select an option to proceed:"

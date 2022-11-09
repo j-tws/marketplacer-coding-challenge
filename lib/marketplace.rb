@@ -72,12 +72,13 @@ class Marketplace
   
   def add_item(num)
     unless @products[num - 1].nil?
-      puts "Successfully added #{@products[num - 1]}" 
+      puts "Successfully added #{@products[num - 1]["name"]}" 
       @cart << @products[num - 1]
     end
   end
-
+  
   def remove_item(num)
+    puts "Successfully removed #{@products[num - 1]["name"]}" 
     @cart.delete_at(num - 1)
   end
   
@@ -104,7 +105,8 @@ class Marketplace
 
     @discount.each do |total, discount|
       if self.cart_total > total
-        return (self.cart_total * discount).round(2)
+        # return (self.cart_total * discount).round(2)
+        return {total => discount}
       end
     end
 
