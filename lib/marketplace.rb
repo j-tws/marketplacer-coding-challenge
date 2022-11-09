@@ -73,7 +73,6 @@ class Marketplace
   end
   
   def list_cart
-    puts "This is your cart with current items:"
     @cart.each_with_index do |item, i|
       puts "#{i+1}. Item: #{item["name"]}, Price: #{item["price"]}" 
     end
