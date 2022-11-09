@@ -63,22 +63,24 @@ class App
 
   def start
     main_page = self.menu
-    cart_page = self.view_cart
 
     while main_page != '3'
 
       if main_page == "1"
         self.add_item_to_cart_display
+
       elsif main_page == "2"
-        self.view_cart
-      elsif cart_page == "1"
-        self.remove_item_from_cart_display
-      elsif cart_page == "2"
-        self.menu
-      end
+        cart_page = self.view_cart
+
+        if cart_page == "1"
+          self.remove_item_from_cart_display
+        end # cart_page == "1" aka removing item from cart
+
+      end # main_page == "1"
+
+      main_page = self.menu
 
     end # while loop
-
   end # start
 
 end # class App
