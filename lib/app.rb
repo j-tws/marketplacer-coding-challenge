@@ -61,21 +61,29 @@ class App
   end
 
 
-  # def start
-  #   mode = self.menu
+  def start
+    main_page = self.menu
+    cart_page = self.view_cart
 
-  #   while mode != '3'
+    while main_page != '3'
 
-  #     if mode == "1"
+      if main_page == "1"
+        self.add_item_to_cart_display
+      elsif main_page == "2"
+        self.view_cart
+      elsif cart_page == "1"
+        self.remove_item_from_cart_display
+      elsif cart_page == "2"
+        self.menu
+      end
 
-  #     end
+    end # while loop
 
-  #   end
-  # end
+  end # start
 
-end
+end # class App
 
 app = App.new
-app.add_item_to_cart_display
+app.start
 # puts app.marketplace.cart
-puts app.view_cart
+# puts app.view_cart
