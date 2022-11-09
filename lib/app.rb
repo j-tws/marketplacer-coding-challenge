@@ -70,25 +70,30 @@ class App
     @marketplace.remove_item(item)
   end
 
-  def start
+  def run_command(input)
 
+    if input == "1"
+      self.add_item_to_cart_display
+    elsif input == "2"
+  
+      cart_command = self.view_cart
+      if cart_command == "1"
+        self.remove_item_from_cart_display
+      end # cart_page == "1" aka removing item from cart
+  
+    else 
+      puts "Please select valid option"
+    end # main_page == "1"
+    
+  end
+
+  def start
     menu_command = nil
 
     while menu_command != '3'
 
       menu_command = self.menu
-      if menu_command == "1"
-        self.add_item_to_cart_display
-      elsif menu_command == "2"
-
-        cart_command = self.view_cart
-        if cart_command == "1"
-          self.remove_item_from_cart_display
-        end # cart_page == "1" aka removing item from cart
-
-      else 
-        puts "Please select valid option"
-      end # main_page == "1"
+      run_command(menu_command)
       
     end # while loop
   end # start

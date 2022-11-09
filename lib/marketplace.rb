@@ -62,10 +62,12 @@ class Marketplace
     @products.each_with_index do |item, i|
       puts "#{i+1}. Item: #{item["name"]}, Price: #{item["price"]}" 
     end
+
+    @products 
   end
   
   def add_item(num)
-    @cart << @products[num - 1]
+    @cart << @products[num - 1] unless @products[num - 1].nil?
   end
 
   def remove_item(num)
@@ -76,6 +78,8 @@ class Marketplace
     @cart.each_with_index do |item, i|
       puts "#{i+1}. Item: #{item["name"]}, Price: $#{item["price"]}" 
     end
+
+    @cart
   end
 
   def cart_total
