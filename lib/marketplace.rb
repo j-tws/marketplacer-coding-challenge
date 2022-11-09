@@ -74,7 +74,7 @@ class Marketplace
   
   def list_cart
     @cart.each_with_index do |item, i|
-      puts "#{i+1}. Item: #{item["name"]}, Price: #{item["price"]}" 
+      puts "#{i+1}. Item: #{item["name"]}, Price: $#{item["price"]}" 
     end
   end
 
@@ -93,7 +93,5 @@ class Marketplace
   end
 
 end
-
-
 
 # binding.pry
