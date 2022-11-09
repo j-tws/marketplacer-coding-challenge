@@ -53,7 +53,7 @@ class App
     @marketplace.list_products
     puts "----------------------------------------------"
     puts "Please enter item number to add into cart:"
-    item = gets.chomp.to_i
+    item = gets.chomp
     @marketplace.add_item(item)
   end
   
