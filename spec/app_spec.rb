@@ -17,4 +17,12 @@ RSpec.describe App do
     end.to output("Please select valid option\n").to_stdout
   end
 
+  it 'should quit after user input 3' do
+    test_app = App.new
+    
+    expect do
+      test_app.run_command("3")
+    end.to output("Pleasure doing business with you!\n").to_stdout
+  end
+
 end

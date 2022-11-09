@@ -80,8 +80,10 @@ class App
       if cart_command == "1"
         self.remove_item_from_cart_display
       end # cart_page == "1" aka removing item from cart
-  
-    else 
+      
+    elsif input == "3"
+      puts "Pleasure doing business with you!"
+    else
       puts "Please select valid option"
     end # main_page == "1"
     
@@ -96,6 +98,7 @@ class App
       run_command(menu_command)
       
     end # while loop
+
   end # start
 
 end # class App
