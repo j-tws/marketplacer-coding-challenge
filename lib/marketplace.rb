@@ -69,7 +69,7 @@ class Marketplace
   end
 
   def remove_item(num)
-    @cart.delete(@cart[num - 1])
+    @cart.delete_at(num - 1)
   end
   
   def list_cart

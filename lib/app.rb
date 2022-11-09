@@ -13,18 +13,22 @@ class App
   def menu 
     puts "Welcome to Marketplacer!"
     puts "The marketplace's list of products:"
+    puts "----------------------------------------------"
     @marketplace.list_products
+    puts "----------------------------------------------"
     puts "Please select an option to proceed:"
     puts "1. Add item to cart"
     puts "2. View cart"
     puts "3. Exit app"
     gets.chomp
   end
-
+  
   def view_cart
     puts "Here is your cart:"
+    puts "----------------------------------------------"
     @marketplace.list_cart
-    puts "Your total is $#{@marketplace.cart_total}"
+    puts "----------------------------------------------"
+    puts "Your total is $#{@marketplace.cart_total.round(2)}"
     
     if @marketplace.cart_total >= 20
       discount = @marketplace
@@ -41,19 +45,23 @@ class App
     puts "2. Back to product list"
     gets.chomp
   end
-
+  
   def add_item_to_cart_display
     puts "Welcome to Marketplacer!"
     puts "The marketplace's list of products:"
+    puts "----------------------------------------------"
     @marketplace.list_products
+    puts "----------------------------------------------"
     puts "Please enter item number to add into cart:"
     item = gets.chomp
     @marketplace.add_item(item.to_i)
   end
-
+  
   def remove_item_from_cart_display
     puts "Here is your cart"
+    puts "----------------------------------------------"
     @marketplace.list_cart
+    puts "----------------------------------------------"
 
     puts "Please select an item to remove:"
     item = gets.chomp
@@ -68,7 +76,7 @@ class App
 
       if main_page == "1"
         self.add_item_to_cart_display
-
+        
       elsif main_page == "2"
         cart_page = self.view_cart
 
