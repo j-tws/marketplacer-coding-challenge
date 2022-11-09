@@ -58,9 +58,9 @@ class Marketplace
   end
 
   def list_products
-    p "The marketplace's list of products!"
+
     @products.each_with_index do |item, i|
-      p "#{i+1}. Item: #{item["name"]}, Price: #{item["price"]}" 
+      puts "#{i+1}. Item: #{item["name"]}, Price: #{item["price"]}" 
     end
   end
   
@@ -75,7 +75,7 @@ class Marketplace
   def list_cart
     puts "This is your cart with current items:"
     @cart.each_with_index do |item, i|
-      p "#{i+1}. Item: #{item["name"]}, Price: #{item["price"]}" 
+      puts "#{i+1}. Item: #{item["name"]}, Price: #{item["price"]}" 
     end
   end
 
@@ -95,18 +95,6 @@ class Marketplace
 
 end
 
-
-def menu
-  
-  products_file = File.read('products.json')
-  products = JSON.parse(products_file)
-  test_marketplace = Marketplace.new products
-  p "Welcome to Marketplacer!"
-  test_marketplace.list_products
-
-end
-
-menu
 
 
 # binding.pry
