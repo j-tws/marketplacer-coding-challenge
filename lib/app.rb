@@ -64,27 +64,50 @@ class App
     puts "----------------------------------------------"
 
     puts "Please select an item to remove:"
-    item = gets.chomp.to_i
-    @marketplace.remove_item(item)
+    item = gets.chomp
+
+    if item.to_i <= 0 || item.to_i > @marketplace.cart.length
+      puts "Please enter valid option"
+      return
+    end
+
+    @marketplace.remove_item(item.to_i)
   end
 
   def run_command(input)
 
-    if input == "1"
-      self.add_item_to_cart_display
-    elsif input == "2"
+    # if input == "1"
+    #   self.add_item_to_cart_display
+    # elsif input == "2"
   
-      cart_command = self.view_cart
-      if cart_command == "1"
-        self.remove_item_from_cart_display
-      end # cart_page == "1" aka removing item from cart
+    #   cart_command = self.view_cart
+    #   if cart_command == "1"
+    #     self.remove_item_from_cart_display
+    #   end # cart_page == "1" aka removing item from cart
       
-    elsif input == "3"
+    # elsif input == "3"
+    #   puts "Pleasure doing business with you!"
+    # else
+    #   puts "Please select valid option"
+    # end # main_page == "1"
+
+    case input
+    when "1"
+      self.add_item_to_cart_display
+    when "2"
+      cart_command = self.view_cart
+      case cart_command
+      when "1"
+        self.remove_item_from_cart_display
+      else
+        puts "Please select valid option"
+      end
+    when "3"
       puts "Pleasure doing business with you!"
     else
       puts "Please select valid option"
-    end # main_page == "1"
-    
+    end
+
   end
 
   def start
@@ -101,5 +124,4 @@ class App
 
 end # class App
 
-# binding.pry
 
