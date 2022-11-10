@@ -46,6 +46,7 @@ class Marketplace
   end
   
   def list_cart
+
     @cart.each_with_index do |item, i|
       puts "#{i+1}. Item: #{item["name"]}, Price: $#{item["price"]}" 
     end
@@ -68,7 +69,6 @@ class Marketplace
 
     @discount.each do |total, discount|
       if self.cart_total > total
-        # return (self.cart_total * discount).round(2)
         return {
           "total_needed" => total, 
           "discount_rate" => discount,
@@ -81,5 +81,17 @@ class Marketplace
 
 end
 
-# binding.pry
+products_file = File.read('products.json')
+products = JSON.parse(products_file)
+marketplace = Marketplace.new products
+marketplace.add_item(2)
+marketplace.add_item(2)
+marketplace.add_item(2)
+marketplace.add_item(2)
+# marketplace.add_item(2)
+p marketplace.cart
+# p marketplace.remove_item(5)
+
+
+binding.pry
 
