@@ -1,5 +1,6 @@
 require 'json'
 require 'pry'
+require 'colorize'
 
 class Marketplace
 
@@ -34,13 +35,13 @@ class Marketplace
   
   def add_item(num)
     unless @products[num - 1].nil?
-      puts "Successfully added #{@products[num - 1]["name"]}" 
+      puts "Successfully added #{@products[num - 1]["name"]} to cart".green.bold
       @cart << @products[num - 1]
     end
   end
   
   def remove_item(num)
-    puts "Successfully removed #{@products[num - 1]["name"]}" 
+    puts "Successfully removed #{@products[num - 1]["name"]} from cart".green.bold
     @cart.delete_at(num - 1)
   end
   

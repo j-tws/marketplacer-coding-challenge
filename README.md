@@ -77,7 +77,7 @@ For this challenge I used `RSpec` which is a standard testing tool for Ruby. For
 
 For the `class App` I still yet to fully understand how to write tests for a CLI display application. For now the test that I've managed to write through research is to test for basic user inputs. This is something I will definitely need to add into my to-learn list.
 
-## User Experience
+### User Experience
 
 I give some focus on to user experience for this CLI app just so the user can use the app with more ease, especially when a CLI app can potentially be lost in a sea of texts. I've implemented simple strategies such as coloring important texts, sending out an error message if there are any, and clear instructions for the user to input. 
 
@@ -102,7 +102,7 @@ I give some focus on to user experience for this CLI app just so the user can us
   * Lesson learnt: On occassion you can come out better solutions than the internet!
 * Is there a better way to write the CLI display? Lots of puts currently. Need to find out more
 * Foundout that I like to color texts in CLI app
-* Always write happy and sad path for tests
+* Always write happy and sad path for tests. Also ask on how to write tests for display `class App`.
 
 
 

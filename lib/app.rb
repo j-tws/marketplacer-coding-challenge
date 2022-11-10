@@ -1,6 +1,7 @@
 require_relative 'marketplace'
 require 'json'
 require 'pry'
+require 'colorize'
 
 class App
   attr_reader :marketplace
@@ -52,9 +53,15 @@ class App
     puts "----------------------------------------------"
     @marketplace.list_products
     puts "----------------------------------------------"
-    puts "Please enter item number to add into cart:"
+    puts "Please enter item number to add into cart (1-#{@marketplace.products.length}):"
     item = gets.chomp
-    @marketplace.add_item(item)
+
+    if item.to_i <= 0 || item.to_i > @marketplace.products.length
+      puts "Please enter valid option".red.bold
+      return
+    end
+
+    @marketplace.add_item(item.to_i)
   end
   
   def remove_item_from_cart_display
@@ -62,12 +69,11 @@ class App
     puts "----------------------------------------------"
     @marketplace.list_cart
     puts "----------------------------------------------"
-
-    puts "Please select an item to remove:"
+    puts "Please select an item to remove (#{@marketplace.cart.length <= 1 ? @marketplace.cart.length : "1 - #{@marketplace.cart.length}"}):"
     item = gets.chomp
 
     if item.to_i <= 0 || item.to_i > @marketplace.cart.length
-      puts "Please enter valid option"
+      puts "Please enter valid option".red.bold
       return
     end
 
@@ -85,12 +91,12 @@ class App
       when "1"
         self.remove_item_from_cart_display
       else
-        puts "Please select valid option"
+        puts "Please select valid option".red.bold
       end
     when "3"
-      puts "Pleasure doing business with you!"
+      puts "Pleasure doing business with you!".green.bold
     else
-      puts "Please select valid option"
+      puts "Please select valid option".red.bold
     end
 
   end
