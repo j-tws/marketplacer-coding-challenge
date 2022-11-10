@@ -41,7 +41,7 @@ class Marketplace
   end
   
   def remove_item(num)
-    puts "Successfully removed #{@products[num - 1]["name"]} from cart".green.bold
+    puts "Successfully removed #{@cart[num - 1]["name"]} from cart".green.bold
     @cart.delete_at(num - 1)
   end
   
@@ -81,17 +81,5 @@ class Marketplace
 
 end
 
-products_file = File.read('products.json')
-products = JSON.parse(products_file)
-marketplace = Marketplace.new products
-marketplace.add_item(2)
-marketplace.add_item(2)
-marketplace.add_item(2)
-marketplace.add_item(2)
-# marketplace.add_item(2)
-p marketplace.cart
-# p marketplace.remove_item(5)
-
-
-binding.pry
+# binding.pry
 
