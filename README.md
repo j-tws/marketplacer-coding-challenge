@@ -69,6 +69,8 @@ The `class App` handles how the graphical UI is displayed and how to direct the 
 
 Seperation of concerns is a common practice in computer science as it is a form of abstraction. It also promotes better simplification, independent development, and maintenance of code. Having this approach in this challenge definitely increased my understanding towards seperation of concerns.
 
+NOTE: Last minute I added response messages into the `class Marketplace` which blurs boundaries a bit. Need to have a look at it.
+
 ### Test Driven Development
 
 Test Driven Development (aka TDD) is something I give a lot on emphasis on as it is something I personally want to be very, very strong at. Writing good tests makes me more confident in writing development/production code and I do enjoy writing them! Nothing is more pleasing than seeing green dots / ticks being passed in test.
@@ -104,6 +106,7 @@ I give some focus on to user experience for this CLI app just so the user can us
 * Foundout that I like to color texts in CLI app
 * Always write happy and sad path for tests. Also ask on how to write tests for display `class App`.
 * FOCUS ON EXECUTION! very easy to get distracted by trying to do many things at once. Important to get it nice and condensed
+* If you are stuck at something for hours, it helps to go out for a walk and come back.
 
 
 
