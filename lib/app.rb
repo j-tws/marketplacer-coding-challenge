@@ -30,14 +30,14 @@ class App
     puts "----------------------------------------------"
     @marketplace.list_cart
     puts "----------------------------------------------"
-    puts "Your total is $#{@marketplace.cart_total.round(2)}"
+    puts "Your total is $#{@marketplace.cart_total.round(2)}".yellow
     
     if @marketplace.cart_total >= 20
       discount = @marketplace.cart_total_after_discount
 
-      puts "Discount of #{100 - (100 * discount.values.first).to_i}% applied on total greater than $#{discount.keys.first}"
+      puts "Discount of #{100 - (100 * discount["discount_rate"]).to_i}% applied on total greater than $#{discount["total_needed"]}"
 
-      puts "TOTAL after discount - $#{(@marketplace.cart_total * discount.values.first).round(2)}"
+      puts "TOTAL after discount - $#{discount["cart_total_after_discount"]}".yellow.bold
     end
 
     puts "Please select an option to proceed:"
@@ -90,6 +90,8 @@ class App
       case cart_command
       when "1"
         self.remove_item_from_cart_display
+      when "2"
+        return
       else
         puts "Please select valid option".red.bold
       end

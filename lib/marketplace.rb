@@ -69,7 +69,11 @@ class Marketplace
     @discount.each do |total, discount|
       if self.cart_total > total
         # return (self.cart_total * discount).round(2)
-        return {total => discount}
+        return {
+          "total_needed" => total, 
+          "discount_rate" => discount,
+          "cart_total_after_discount" => (self.cart_total * discount).round(2)
+        }
       end
     end
 

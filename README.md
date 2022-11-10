@@ -103,6 +103,7 @@ I give some focus on to user experience for this CLI app just so the user can us
 * Is there a better way to write the CLI display? Lots of puts currently. Need to find out more
 * Foundout that I like to color texts in CLI app
 * Always write happy and sad path for tests. Also ask on how to write tests for display `class App`.
+* FOCUS ON EXECUTION! very easy to get distracted by trying to do many things at once. Important to get it nice and condensed
 
 
 
