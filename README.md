@@ -69,7 +69,7 @@ The `class App` handles how the graphical UI is displayed and how to direct the 
 
 Seperation of concerns is a common practice in computer science as it is a form of abstraction. It also promotes better simplification, independent development, and maintenance of code. Having this approach in this challenge definitely increased my understanding towards seperation of concerns.
 
-NOTE: Last minute I added response messages into the `class Marketplace` which blurs boundaries a bit. Need to have a look at it.
+NOTE: Last minute I added a few response messages into the `class Marketplace` which blurs boundaries a bit. Need to revisit it when I can
 
 ### Test Driven Development
 
