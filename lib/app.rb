@@ -18,7 +18,7 @@ class App
     puts "----------------------------------------------"
     @marketplace.list_products
     puts "----------------------------------------------"
-    puts "Please select an option to proceed:"
+    puts "Please select an option to proceed (Enter number 1 - 3):"
     puts "1. Add item to cart"
     puts "2. View cart"
     puts "3. Exit app"
@@ -40,7 +40,7 @@ class App
       puts "TOTAL after discount - $#{discount["cart_total_after_discount"]}".yellow.bold
     end
 
-    puts "Please select an option to proceed (Enter number 1 - 3):"
+    puts "Please select an option to proceed (Enter number 1 - 2):"
     puts "1. Remove item from cart"
     puts "2. Back to product list"
     gets.chomp
