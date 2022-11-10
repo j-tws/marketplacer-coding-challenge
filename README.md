@@ -4,6 +4,24 @@
 
 Written in Ruby, the challenge for this coding test is to create a simple CLI marketplace application for Marketplacer. The application will have a list of products where users can select which item to add into their cart. User can also view their cart with the option to remove items from the cart. The cart display will show the price total of selected items along with the discounted total price if applicable.
 
+### The Challenge given
+Your application should contain the following functionality:
+
+- Load a list of products from a file.
+- List product details to the user.
+- Add products to a Shopping Cart.
+- Apply promotional discounts.
+- Calculate and display the total cost along with discounted total if applicable
+
+You can find the list of available products in the attached file `products.json`
+
+List of available promotions is provided below:
+
+- 10% off on total greater than $20
+- 15% off on total greater than $50
+- 20% off on total greater than $100
+
+
 ## Getting Started
 
 ### Dependencies
