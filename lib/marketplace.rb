@@ -41,8 +41,10 @@ class Marketplace
   end
   
   def remove_item(num)
-    puts "Successfully removed #{@cart[num - 1]["name"]} from cart".green.bold
-    @cart.delete_at(num - 1)
+    unless @cart[num - 1].nil?
+      puts "Successfully removed #{@cart[num - 1]["name"]} from cart".green.bold
+      @cart.delete_at(num - 1)
+    end
   end
   
   def list_cart

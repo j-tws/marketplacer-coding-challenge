@@ -69,20 +69,23 @@ RSpec.describe Marketplace do
     test_marketplace.add_item 1
     test_marketplace.add_item 1
     test_marketplace.add_item 2
-    expect(test_marketplace.cart_total_after_discount).to eq(23.49)
+    discount = test_marketplace.cart_total_after_discount
+    expect(discount["cart_total_after_discount"]).to eq(23.49)
   end
-
+  
   it "can calculate 20% discount" do
     test_marketplace = Marketplace.new test_products
     test_marketplace.add_item 3
-
-    expect(test_marketplace.cart_total_after_discount).to eq(96)
+    discount = test_marketplace.cart_total_after_discount
+    
+    expect(discount["cart_total_after_discount"]).to eq(96)
   end
-
+  
   it "can calculate 15% discount" do
     test_marketplace = Marketplace.new test_products
     test_marketplace.add_item 4
-    expect(test_marketplace.cart_total_after_discount).to eq(51)
+    discount = test_marketplace.cart_total_after_discount
+    expect(discount["cart_total_after_discount"]).to eq(51)
   end
 
 end
