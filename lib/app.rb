@@ -40,7 +40,7 @@ class App
       puts "TOTAL after discount - $#{discount["cart_total_after_discount"]}".yellow.bold
     end
 
-    puts "Please select an option to proceed:"
+    puts "Please select an option to proceed (Enter number 1 - 3):"
     puts "1. Remove item from cart"
     puts "2. Back to product list"
     gets.chomp
@@ -53,7 +53,7 @@ class App
     puts "----------------------------------------------"
     @marketplace.list_products
     puts "----------------------------------------------"
-    puts "Please enter item number to add into cart (1-#{@marketplace.products.length}):"
+    puts "Please enter item number to add into cart (Enter number 1-#{@marketplace.products.length}):"
     item = gets.chomp
 
     if item.to_i <= 0 || item.to_i > @marketplace.products.length
@@ -69,7 +69,7 @@ class App
     puts "----------------------------------------------"
     @marketplace.list_cart
     puts "----------------------------------------------"
-    puts "Please select an item to remove (#{@marketplace.cart.length <= 1 ? @marketplace.cart.length : "1 - #{@marketplace.cart.length}"}):"
+    puts "Please select an item to remove (Enter number #{@marketplace.cart.length <= 1 ? @marketplace.cart.length : "1 - #{@marketplace.cart.length}"}):"
     item = gets.chomp
 
     if item.to_i <= 0 || item.to_i > @marketplace.cart.length
