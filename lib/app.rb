@@ -12,11 +12,23 @@ class App
     @marketplace = Marketplace.new products
   end
 
+  def list_products
+    @marketplace.products.each_with_index do |item, i|
+      puts "#{i+1}. Item: #{item["name"]}, Price: #{item["price"]}" 
+    end
+  end
+
+  def list_cart
+    @marketplace.cart.each_with_index do |item, i|
+      puts "#{i+1}. Item: #{item["name"]}, Price: $#{item["price"]}" 
+    end
+  end
+
   def menu 
     puts "Welcome to Marketplacer!"
     puts "The marketplace's list of products:"
     puts "----------------------------------------------"
-    @marketplace.list_products
+    self.list_products
     puts "----------------------------------------------"
     puts "Please select an option to proceed (Enter number 1 - 3):"
     puts "1. Add item to cart"
@@ -28,7 +40,7 @@ class App
   def view_cart
     puts "Here is your cart:"
     puts "----------------------------------------------"
-    @marketplace.list_cart
+    self.list_cart
     puts "----------------------------------------------"
     puts "Your total is $#{@marketplace.cart_total.round(2)}".yellow
     
@@ -51,7 +63,7 @@ class App
     puts "Welcome to Marketplacer!"
     puts "The marketplace's list of products:"
     puts "----------------------------------------------"
-    @marketplace.list_products
+    self.list_products
     puts "----------------------------------------------"
     puts "Please enter item number to add into cart (Enter number 1-#{@marketplace.products.length}):"
     item = gets.chomp
@@ -61,13 +73,14 @@ class App
       return
     end
 
-    @marketplace.add_item(item.to_i)
+    added_item = @marketplace.add_item(item.to_i)
+    puts "Successfully added #{added_item["name"]} to cart".green.bold
   end
   
   def remove_item_from_cart_display
     puts "Here is your cart"
     puts "----------------------------------------------"
-    @marketplace.list_cart
+    self.list_cart
     puts "----------------------------------------------"
     puts "Please select an item to remove (Enter number #{@marketplace.cart.length <= 1 ? @marketplace.cart.length : "1 - #{@marketplace.cart.length}"}):"
     item = gets.chomp
@@ -77,7 +90,8 @@ class App
       return
     end
 
-    @marketplace.remove_item(item.to_i)
+    removed_item = @marketplace.remove_item(item.to_i)
+    puts "Successfully removed #{removed_item["name"]} from cart".green.bold
   end
 
   def run_command(input)

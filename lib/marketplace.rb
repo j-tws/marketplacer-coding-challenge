@@ -23,38 +23,24 @@ class Marketplace
       0 => 1
     }
   end
-
-  def list_products
-
-    @products.each_with_index do |item, i|
-      puts "#{i+1}. Item: #{item["name"]}, Price: #{item["price"]}" 
-    end
-
-    @products 
-  end
   
   def add_item(num)
     unless @products[num - 1].nil?
-      puts "Successfully added #{@products[num - 1]["name"]} to cart".green.bold
+      item = @products[num - 1]
       @cart << @products[num - 1]
+      item
     end
   end
   
   def remove_item(num)
     unless @cart[num - 1].nil?
-      puts "Successfully removed #{@cart[num - 1]["name"]} from cart".green.bold
+      item = @cart[num - 1]
       @cart.delete_at(num - 1)
+      item
     end
   end
   
-  def list_cart
-
-    @cart.each_with_index do |item, i|
-      puts "#{i+1}. Item: #{item["name"]}, Price: $#{item["price"]}" 
-    end
-
-    @cart
-  end
+  
 
   def cart_total
     total = 0
