@@ -8,7 +8,6 @@ RSpec.describe Marketplace do
     {"name" => "Saffron", "price" => "120"},
     {"name" => "Truffle", "price" => "60"}
   ]
-
   
   it "should have a list of products" do
     test_marketplace = Marketplace.new test_products
@@ -86,6 +85,35 @@ RSpec.describe Marketplace do
     test_marketplace.add_item 4
     discount = test_marketplace.cart_total_after_discount
     expect(discount["cart_total_after_discount"]).to eq(51)
+  end
+
+  it "can calculate 50% discount" do
+    test_marketplace = Marketplace.new test_products
+    test_marketplace.add_item 3
+    test_marketplace.add_item 4
+    discount = test_marketplace.cart_total_after_discount
+    expect(discount["cart_total_after_discount"]).to eq(90)
+  end
+  
+  it "can inform user what's the next discount" do
+    test_marketplace = Marketplace.new test_products
+    test_marketplace.add_item 4
+    expect(test_marketplace.next_discount).to eq(100)
+  end
+
+  it "can inform user how much needed for the next discount" do
+    test_marketplace = Marketplace.new test_products
+    test_marketplace.add_item 4
+    expect(test_marketplace.next_discount_message).to eq("Buy $40 more to get 20% off")
+  end
+
+  it "can add one of everything into cart" do
+    test_marketplace = Marketplace.new test_products
+    test_marketplace.add_item 1
+    test_marketplace.add_item 2
+    test_marketplace.add_item 3
+    test_marketplace.add_item 4
+    expect(test_marketplace.next_discount_message).to eq("No further discount after")
   end
 
 end

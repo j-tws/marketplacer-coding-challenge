@@ -43,13 +43,14 @@ class App
     self.list_cart
     puts "----------------------------------------------"
     puts "Your total is $#{@marketplace.cart_total.round(2)}".yellow
-    
+
     if @marketplace.cart_total >= 20
       discount = @marketplace.cart_total_after_discount
 
       puts "Discount of #{100 - (100 * discount["discount_rate"]).to_i}% applied on total greater than $#{discount["total_needed"]}"
 
       puts "TOTAL after discount - $#{discount["cart_total_after_discount"]}".yellow.bold
+      puts @marketplace.next_discount_message
     end
 
     puts "Please select an option to proceed (Enter number 1 - 2):"
