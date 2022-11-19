@@ -43,17 +43,17 @@ class Marketplace
   end
 
   def next_discount
-    array = @discount.keys.select do |discount|
-      self.cart_total < discount
+    # array = @discount.keys.select do |discount|
+    #   self.cart_total < discount
+    # end
+    # array.last
+    @discount.keys.reverse.find do |discount|
+      cart_total < discount
     end
-    array.last
   end
 
   def next_discount_message
-
-    if next_discount.nil?
-      return "No further discount after"
-    end
+    return "No further discount after" if next_discount.nil?
 
     amount_needed = next_discount - cart_total 
     "Buy $#{amount_needed.to_i} more to get #{(100 - (@discount[next_discount] * 100)).to_i}% off"

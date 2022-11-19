@@ -106,8 +106,8 @@ RSpec.describe Marketplace do
     test_marketplace.add_item 4
     expect(test_marketplace.next_discount_message).to eq("Buy $40 more to get 20% off")
   end
-
-  it "can add one of everything into cart" do
+  
+  it "can should give proper message statement if highest discount is triggered " do
     test_marketplace = Marketplace.new test_products
     test_marketplace.add_item 1
     test_marketplace.add_item 2
