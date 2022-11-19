@@ -43,13 +43,19 @@ class Marketplace
   end
 
   def next_discount
+    # code review solution
     # array = @discount.keys.select do |discount|
     #   self.cart_total < discount
     # end
     # array.last
-    @discount.keys.reverse.find do |discount|
-      cart_total < discount
-    end
+
+    # re-look solution
+    # @discount.keys.reverse.find do |discount|
+    #   cart_total < discount
+    # end
+    
+    # I can even make it DRYer by making it a one-liner
+    @discount.keys.reverse.find { |discount| cart_total < discount }
   end
 
   def next_discount_message
